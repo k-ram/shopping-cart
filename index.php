@@ -38,13 +38,43 @@
 		// Extract data from database object
 		$result = $result->fetch_assoc();
 
-		// Add the item to the cart
-		$_SESSION['cart'][] = [
+		$productFound = false;
+
+		// Loop over the cart and see if this product is added already
+		for ($i=0; $i < count($_SESSION['cart']); $i++) { 
+			
+			// Get the id of the prouct in the cart
+			// $i will look at each item in the cart
+			$cartItemId = $_SESSION['cart'][$i]['id'];
+
+			// Get the id of the cart being added to the cart
+			$addItemId = $_POST['product-id'];
+
+			// If the two IDs match
+			if ( $cartItemId == $addItemId ) {
+				
+				$_SESSION['cart'][$i]['quantity'] += $_POST['quantity'];
+				$productFound = true;
+
+			}
+
+		}
+
+		// IF product is not found in the cart
+		if ( !$productFound ) {
+			
+			// Add the item to the cart
+			//array_push() is similar to ['cart'][]
+			$_SESSION['cart'][] = [
 								'id'=>$_POST['product-id'],
 								'name'=>$_POST['name'],
 								'description'=>$_POST['description'],
-								'price'=>$result['price']
+								'price'=>$result['price'],
+								'quantity'=>$_POST['quantity']
 							];
+
+		}
+		
 	}
 
 	// include header
@@ -54,10 +84,9 @@
 
 <?php 
 
-	
-
 	// Get all products from the database
-	$sql = "	SELECT id, name, description, price, stock FROM products";
+	// SELECT * grabs all the columns in that table
+  	$sql = "	SELECT id, name, description, price, stock FROM products";
 
 	// Run the query
 	$result = $dbc->query( $sql );
