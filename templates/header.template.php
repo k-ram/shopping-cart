@@ -6,12 +6,20 @@
 </head>
 <body>
 
+<nav>
+	
+	<ul>
+		<li><a href="index.php">Home</a></li>
+		<li><a href="checkout.php">Checkout</a></li>
+	</ul>
+
+</nav>
 <?php 
 
-	echo '<pre>';
+	// echo '<pre>';
 
-	// Show the contents of the cart
-	print_r( $_SESSION['cart']);
+	// // Show the contents of the cart
+	// print_r( $_SESSION['cart']);
 	
-	echo '</pre>';
+	// echo '</pre>';
  ?>
