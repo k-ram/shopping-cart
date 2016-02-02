@@ -28,7 +28,7 @@ $(document).ready(function(){
 
 				for (var i = 0; i < dataFromServer.length; i++) {
 
-					$('#suburbs').append('<option value="'+dataFromServer[i].suburbId+'">'+dataFromServer[i].suburbName+'</option>');
+					$('#suburbs').append('<option value="'+dataFromServer[i].suburbID+'">'+dataFromServer[i].suburbName+'</option>');
 				};
 
 

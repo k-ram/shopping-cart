@@ -45,13 +45,13 @@
 			
 			// Get the id of the prouct in the cart
 			// $i will look at each item in the cart
-			$cartItemId = $_SESSION['cart'][$i]['id'];
+			$cartItemID = $_SESSION['cart'][$i]['id'];
 
 			// Get the id of the cart being added to the cart
-			$addItemId = $_POST['product-id'];
+			$addItemID = $_POST['product-id'];
 
 			// If the two IDs match
-			if ( $cartItemId == $addItemId ) {
+			if ( $cartItemID == $addItemID ) {
 				
 				$_SESSION['cart'][$i]['quantity'] += $_POST['quantity'];
 				$productFound = true;
